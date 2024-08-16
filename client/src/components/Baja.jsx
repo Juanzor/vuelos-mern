@@ -32,37 +32,41 @@ const Baja = () => {
 
     return (
         <>
-            <div className='container col-sm-4 '>
-                <h3 className='mt-5 mb-4'>Baja</h3>
-                <select
-                    value={flightToRemove}
-                    onChange={(e) => {
-                        setFlightToRemove(e.target.value);
-                    }}
-                    className='form-select form-select d-inline'
-                >
-                    <option hidden>Selecciona un vuelo</option>
+            {loading ? (
+                <h1 className='container col-sm-4'>Cargando...</h1>
+            ) : (
+                <div className='container col-sm-4'>
+                    <h3 className='mt-5 mb-4'>Baja</h3>
+                    <select
+                        value={flightToRemove}
+                        onChange={(e) => {
+                            setFlightToRemove(e.target.value);
+                        }}
+                        className='form-select form-select d-inline'
+                    >
+                        <option hidden>Selecciona un vuelo</option>
 
-                    {flights.map((flight) => (
-                        <option id={flight.id} key={flight.id} value={flight.vuelo}>
-                            {flight.vuelo}
-                        </option>
-                    ))}
-                </select>
-                <button
-                    onClick={(e) => {
-                        if (flightToRemove != '') {
-                            deleteFlight(
-                                flights.find((e) => e.vuelo == flightToRemove).id
-                            );
-                        }
-                    }}
-                    type='button'
-                    className='btn btn-light my-4 '
-                >
-                    Eliminar
-                </button>
-            </div>
+                        {flights.map((flight) => (
+                            <option id={flight.id} key={flight.id} value={flight.vuelo}>
+                                {flight.vuelo}
+                            </option>
+                        ))}
+                    </select>
+                    <button
+                        onClick={(e) => {
+                            if (flightToRemove != '') {
+                                deleteFlight(
+                                    flights.find((e) => e.vuelo == flightToRemove).id
+                                );
+                            }
+                        }}
+                        type='button'
+                        className='btn btn-light my-4 '
+                    >
+                        Eliminar
+                    </button>
+                </div>
+            )}
         </>
     );
 };

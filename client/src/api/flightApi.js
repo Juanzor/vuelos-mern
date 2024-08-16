@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const url =
-    import.meta.env.VITE_API_URL || 'http://localhost:3000/flights/api/v1/flights';
+   await import.meta.env.VITE_API_URL || 'http://localhost:3000/flights/api/v1/flights';
 
 export const getFlightsRequest = async () => await axios.get(url);
 

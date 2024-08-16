@@ -1,45 +1,50 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar2 = () => {
     return (
         <nav
-            className='navbar bg-dark navbar-expand-md bg-body-tertiary'
+            class='navbar container bg-dark  navbar-expand-lg bg-body-tertiary'
             data-bs-theme='dark'
         >
-            <div className='container-fluid'>
-                <div className='container d-flex'>
-                    <a className='navbar-brand' href='/'>
+            <div class='container-fluid '>
+               {/*  <div className='container d-flex '> */}
+                    <a class='navbar-brand' href='/'>
                         Vuelos
                     </a>
                     <button
-                        className='navbar-toggler'
+                        class='navbar-toggler'
                         type='button'
                         data-bs-toggle='collapse'
-                        data-bs-target='#navbarNavAltMarkup'
-                        aria-controls='navbarNavAltMarkup'
+                        data-bs-target='#navbarTogglerDemo02'
+                        aria-controls='navbarTogglerDemo02'
                         aria-expanded='false'
                         aria-label='Toggle navigation'
                     >
-                        <span className='navbar-toggler-icon'></span>
+                        <span class='navbar-toggler-icon'></span>
                     </button>
-                    <div className='collapse navbar-collapse ' id='navbarNavAltMarkup'>
-                        
-                        <div className='navbar-nav d-flex'>
-                            <a className='nav-link ' aria-current='page' href='/alta'>
-                                Alta
-                            </a>
-                            <a className='nav-link' href='/baja'>
-                                Baja
-                            </a>
-                            <a className='nav-link' href='/modificar/'>
-                                Modificación
-                            </a>
-                        </div>
+                    <div class='collapse navbar-collapse ' id='navbarTogglerDemo02'>
+                        <ul class='navbar-nav  me-auto mb-2 mb-lg-0'>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='/alta'>
+                                    Alta
+                                </a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='/baja'>
+                                    Baja
+                                </a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link ' href='/modificar/'>
+                                    Modificación
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+               {/*  </div> */}
             </div>
         </nav>
     );
 };
 
-export default Navbar;
+export default Navbar2;

@@ -21,7 +21,6 @@ export const getFlightById = async (req, res) => {
     }
 };
 
-
 export const createFlight = async (req, res) => {
     let { vuelo, horario, linea, demorado } = req.body;
     try {
@@ -41,7 +40,7 @@ export const createFlight = async (req, res) => {
             demorado,
         });
 
-        return res.json({ newFlight });
+        return res.status(201).json({ newFlight });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -54,7 +53,7 @@ export const deleteFlight = async (req, res) => {
                 id,
             },
         });
-        res.sendStatus(204);
+        return res.status(200);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -71,7 +70,7 @@ export const updateFlight = async (req, res) => {
         flight.demorado = demorado;
         await flight.save();
 
-        return res.json(flight);
+        return res.status(200);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

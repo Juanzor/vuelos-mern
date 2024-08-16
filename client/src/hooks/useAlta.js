@@ -15,6 +15,7 @@ const useAltaForm = (initialData, onValidate, flightToEdit) => {
             const { demorado, horario, vuelo, linea } = flightToEdit;
             setFormData({ horario, vuelo, linea, demorado });
         }
+        setLoading(false)
     }, [flightToEdit]);
 
     const handleChange = (e) => {
