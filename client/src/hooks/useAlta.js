@@ -36,10 +36,8 @@ const useAltaForm = (initialData, onValidate, flightToEdit) => {
             try {
                 if (flightToEdit) {
                     const response = await updateFlightRequest(flightToEdit.id, formData);
+                    navigate('/');
                     console.log(response);
-                    if (response) {
-                        navigate('/');
-                    }
 
                     console.log(flightToEdit.id, formData);
                 } else {
