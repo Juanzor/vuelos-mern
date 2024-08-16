@@ -5,14 +5,12 @@ import {
     deleteFlight,
     updateFlight,
     getFlightById,
-    getFlight,
 } from '../controllers/flightsController.js';
 
 const router = Router();
 
 router.get('/flights', getFlights);
-router.get('/flight/:id', getFlightById);
-router.get('/flights/flight', getFlight);
+router.get('/flights/:id', getFlightById);
 router.post('/flights', createFlight);
 router.delete('/flights/:id', deleteFlight);
 router.put('/flights/:id', updateFlight);

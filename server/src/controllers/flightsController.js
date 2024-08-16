@@ -20,21 +20,7 @@ export const getFlightById = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
-export const getFlight = async (req, res) => {
-    const { flight } = req.body;
-    try {
-        const flightFound = await Vuelo.findOne({
-            where: {
-                vuelo: flight,
-            },
-        });
-        if (flightFound) return res.json(flightFound);
 
-        if (!flight) return res.status(404).json({ message: 'Vuelo no encontrado' });
-    } catch (error) {
-        return res.status(500).json({ message: error.message });
-    }
-};
 
 export const createFlight = async (req, res) => {
     let { vuelo, horario, linea, demorado } = req.body;
