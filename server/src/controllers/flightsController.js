@@ -70,7 +70,7 @@ export const updateFlight = async (req, res) => {
         flight.demorado = demorado;
         await flight.save();
 
-        return res.status(200);
+        return res.status(201);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

@@ -10,16 +10,14 @@ const useAltaForm = (initialData, onValidate, flightToEdit) => {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        
         if (flightToEdit) {
             const { demorado, horario, vuelo, linea } = flightToEdit;
             setFormData({ horario, vuelo, linea, demorado });
         }
-        setLoading(false)
+        setLoading(false);
     }, [flightToEdit]);
 
     const handleChange = (e) => {
-      
         let { name, value, type, checked } = e.target;
         setFormData((prevForm) => ({
             ...prevForm,
@@ -37,7 +35,12 @@ const useAltaForm = (initialData, onValidate, flightToEdit) => {
         if (!err) {
             try {
                 if (flightToEdit) {
-                    await updateFlightRequest(flightToEdit.id, formData);
+                    const response = await updateFlightRequest(flightToEdit.id, formData);
+                    console.log(response);
+                    if (response) {
+                        navigate('/');
+                    }
+
                     console.log(flightToEdit.id, formData);
                 } else {
                     await createFlightRequest(formData);
