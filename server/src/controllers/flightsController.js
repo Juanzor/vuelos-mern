@@ -75,7 +75,8 @@ export const updateFlight = async (req, res) => {
             },
         });
 
-        if (flightFound) {
+
+        if (flightFound && (flightFound.vuelo != flight.vuelo)) {
             return res.status(409).json({ message: 'Numero de vuelo ya existente' });
         }
 
