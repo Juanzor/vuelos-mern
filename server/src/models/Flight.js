@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "../database/database.js";
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../database/database.js';
 
 export const Vuelo = sequelize.define(
     'Vuelo',
@@ -11,6 +11,7 @@ export const Vuelo = sequelize.define(
         },
         vuelo: {
             type: DataTypes.STRING,
+            unique: true,
         },
         horario: {
             type: DataTypes.STRING,
@@ -28,5 +29,3 @@ export const Vuelo = sequelize.define(
         timestamps: false,
     }
 );
-
-

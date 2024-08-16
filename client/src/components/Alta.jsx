@@ -38,7 +38,6 @@ const Alta = ({ flightToEdit }) => {
     const { formData, errors, loading, handleChange, handleSubmit } = useAltaForm(
         initialData,
         onValidate,
-
         flightToEdit
     );
 

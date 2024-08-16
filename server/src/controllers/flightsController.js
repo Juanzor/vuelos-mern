@@ -3,7 +3,7 @@ import { Vuelo } from '../models/Flight.js';
 export const getFlights = async (req, res) => {
     try {
         const flights = await Vuelo.findAll();
-        return res.json(flights);
+        return res.status(200).json(flights);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -31,7 +31,7 @@ export const createFlight = async (req, res) => {
         });
 
         if (flightFound) {
-            return res.sendStatus(409);
+            return res.status(409).json({ message: 'Vuelo existente' });
         }
         const newFlight = await Vuelo.create({
             vuelo,
@@ -53,7 +53,7 @@ export const deleteFlight = async (req, res) => {
                 id,
             },
         });
-        return res.status(200);
+        return res.status(200).json({ message: 'Vuelo eliminado' });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -64,10 +64,26 @@ export const updateFlight = async (req, res) => {
 
     try {
         const flight = await Vuelo.findByPk(id);
+
+        if (!flight) {
+            return res.status(404).json({ message: 'Vuelo no encontrado' });
+        }
+
+        const flightFound = await Vuelo.findOne({
+            where: {
+                vuelo,
+            },
+        });
+
+        if (flightFound) {
+            return res.status(409).json({ message: 'Numero de vuelo ya existente' });
+        }
+
         flight.vuelo = vuelo;
         flight.horario = horario;
         flight.linea = linea;
         flight.demorado = demorado;
+
         await flight.save();
 
         return res.status(201).json({ flight });

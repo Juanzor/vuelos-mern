@@ -35,17 +35,14 @@ const useAltaForm = (initialData, onValidate, flightToEdit) => {
         if (!err) {
             try {
                 if (flightToEdit) {
-                    const response = await updateFlightRequest(flightToEdit.id, formData);
+                    await updateFlightRequest(flightToEdit.id, formData);
                     navigate('/');
-                    console.log(response);
-
-                    console.log(flightToEdit.id, formData);
                 } else {
                     await createFlightRequest(formData);
                 }
                 navigate('/');
             } catch (error) {
-                err = { vuelo: 'Vuelo ya existente' };
+                err = { vuelo: error.response.data.message };
 
                 setErrors(err);
             }

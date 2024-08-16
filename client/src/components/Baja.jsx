@@ -22,7 +22,9 @@ const Baja = () => {
     const deleteFlight = async (id) => {
         try {
             const response = await deleteFlightRequest(id);
-            if (response.status == '204') {
+            setFlightToRemove("")
+            console.log(response)
+            if (response.status == '200') {
                 navigate('/');
             }
         } catch (error) {
